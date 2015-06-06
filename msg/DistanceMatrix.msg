@@ -1,0 +1,11 @@
+int32 a
+int32 b
+int32 c
+int32 d
+int32 e
+int32 f
+int32 g
+int32 h
+int32 i
+float64 calc1
+float64 calc2
