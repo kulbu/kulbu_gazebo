@@ -1,8 +1,8 @@
 // Simulated odometry publisher
-// Assumes that the robot follows the given velocity commands 
-// Basically read in the velocity command values and then transmit them as 
+// Assumes that the robot follows the given velocity commands
+// Basically read in the velocity command values and then transmit them as
 // odometry
-// 
+//
 
 
 #include <ros/ros.h>
@@ -117,10 +117,12 @@ int main( int argc, char** argv) {
     // set the velocity
     //odom.child_frame_id = "base_link";
     odom.child_frame_id = "";
-    odom.twist.twist.linear.x = vx+noise;
+    //odom.twist.twist.linear.x = vx+noise;
+    odom.twist.twist.linear.x = vx;
     //odom.twist.twist.linear.y = vy;
     odom.twist.twist.linear.y = 0;
-    odom.twist.twist.angular.z = vth+(vx/2); // add a little to simulate ratodom
+    //odom.twist.twist.angular.z = vth+(vx/2); // add a little to simulate ratodom
+    odom.twist.twist.angular.z = vth;
 
     // publish the message
     odom_pub.publish(odom);
