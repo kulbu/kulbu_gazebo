@@ -1,15 +1,14 @@
 <launch>
   <arg name="ns" default="/kulbu" />
-  <arg name="world" default="default" />
   <arg name="robot" default="kulbu" />
+
+  <arg name="use_twowheels" default="false" />
+
+  <!-- URDF robot description -->
+   <param name="$(arg ns)/robot_description" command="$(find xacro)/xacro.py '$(find kulbu_description)/urdf/$(arg robot).xacro' ns:=$(arg ns)" />
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <node name="kulbu_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
     args="-urdf -param $(arg ns)/robot_description -model $(arg ns)" />
-
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find kulbu_gazebo)/worlds/$(arg world).world"/>
-    <arg name="gui" value="true"/>
-  </include>
 
 </launch>
