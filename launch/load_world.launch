@@ -3,10 +3,6 @@
   <arg name="world" default="default" />
   <arg name="robot" default="kulbu" />
 
-  <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="kulbu_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-    args="-urdf -param $(arg ns)/robot_description -model $(arg ns)" />
-
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find kulbu_gazebo)/worlds/$(arg world).world"/>
     <arg name="gui" value="true"/>

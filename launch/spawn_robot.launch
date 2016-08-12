@@ -2,13 +2,43 @@
   <arg name="ns" default="/kulbu" />
   <arg name="robot" default="kulbu" />
 
+  <arg name="use_ekf" default="true" />
   <arg name="use_twowheels" default="false" />
 
+  <!-- Pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="3.1415926535897931"/>
+
+  <!-- TODO: Robot pose
+  http://answers.ros.org/question/40627/how-do-i-set-the-inital-pose-of-a-robot-in-gazebo/?answer=40631#post-id-40631
+  -->
+
   <!-- URDF robot description -->
-   <param name="$(arg ns)/robot_description" command="$(find xacro)/xacro.py '$(find kulbu_description)/urdf/$(arg robot).xacro' ns:=$(arg ns)" />
+  <param name="$(arg ns)/robot_description" command="$(find xacro)/xacro.py '$(find kulbu_description)/urdf/$(arg robot).xacro' ns:=$(arg ns)" />
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <node name="kulbu_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-    args="-urdf -param $(arg ns)/robot_description -model $(arg ns)" />
+    args="-urdf -param $(arg ns)/robot_description -model $(arg ns)
+      -x $(arg x) -y $(arg y) -z $(arg z)
+      -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+
+  <!-- ROS control -->
+  <include file="$(find kulbu_control)/launch/kulbu_control.launch">
+    <arg name="ns" value="$(arg ns)" />
+    <arg name="use_ekf" value="$(arg use_ekf)" />
+    <arg name="use_twowheels" value="$(arg use_twowheels)" />
+  </include>
+
+  <!-- Goal -->
+  <include file="$(find kulbu_gazebo)/launch/spawn_goal.launch">
+    <arg name="ns" value="$(arg ns)/goal" />
+    <arg name="model" value="goal" />
+    <arg name="x" value="$(arg x).25"/>
+    <arg name="y" value="$(arg y).25"/>
+  </include>
 
 </launch>

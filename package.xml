@@ -20,12 +20,16 @@
   <build_depend>tf</build_depend>
   <build_depend>nav_msgs</build_depend>
   <build_depend>geometry_msgs</build_depend>
+  <build_depend>ratslam_ros</build_depend>
+  <build_depend>rtabmap_ros</build_depend>
 
   <run_depend>message_runtime</run_depend>
   <run_depend>gazebo_ros</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>nav_msgs</run_depend>
   <run_depend>geometry_msgs</run_depend>
+  <run_depend>ratslam_ros</run_depend>
+  <run_depend>rtabmap_ros</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
