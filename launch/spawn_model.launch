@@ -1,0 +1,22 @@
+<launch>
+  <arg name="ns" default="/kulbu" />
+  <arg name="model" default="goal" />
+
+  <!-- Pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="3.1415926535897931"/>
+
+  <!-- URDF description -->
+  <param name="$(arg ns)/model_description" command="$(find xacro)/xacro.py '$(find kulbu_description)/urdf/$(arg model).xacro' ns:=$(arg ns)" />
+
+  <!-- push model_description to factory and spawn in gazebo -->
+  <node name="model_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+    args="-urdf -param $(arg ns)/model_description -model $(arg ns)
+      -x $(arg x) -y $(arg y) -z $(arg z)
+      -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+
+</launch>

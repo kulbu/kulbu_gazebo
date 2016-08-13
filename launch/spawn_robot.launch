@@ -34,7 +34,7 @@
   </include>
 
   <!-- Goal -->
-  <include file="$(find kulbu_gazebo)/launch/spawn_goal.launch">
+  <include file="$(find kulbu_gazebo)/launch/spawn_model.launch">
     <arg name="ns" value="$(arg ns)/goal" />
     <arg name="model" value="goal" />
     <arg name="x" value="$(arg x).25"/>
