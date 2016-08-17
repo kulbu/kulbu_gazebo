@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   geometry_msgs
   message_generation
+  rtabmap_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -84,7 +85,8 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES kulbu_gazebo
-#  CATKIN_DEPENDS gazebo_ros
+  CATKIN_DEPENDS
+    rtabmap_ros
 #  DEPENDS system_lib
 )
 
