@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   geometry_msgs
   message_generation
+  ratslam_ros
   rtabmap_ros
 )
 
@@ -86,6 +87,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES kulbu_gazebo
   CATKIN_DEPENDS
+    ratslam_ros
     rtabmap_ros
 #  DEPENDS system_lib
 )
