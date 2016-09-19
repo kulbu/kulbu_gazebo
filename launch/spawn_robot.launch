@@ -3,7 +3,6 @@
   <arg name="robot" default="kulbu" />
 
   <arg name="use_ekf" default="true" />
-  <arg name="use_twowheels" default="false" />
 
   <!-- Pose -->
   <arg name="x" default="0"/>
@@ -30,7 +29,6 @@
   <include file="$(find kulbu_control)/launch/kulbu_control.launch">
     <arg name="ns" value="$(arg ns)" />
     <arg name="use_ekf" value="$(arg use_ekf)" />
-    <arg name="use_twowheels" value="$(arg use_twowheels)" />
   </include>
 
   <!-- Goal -->
