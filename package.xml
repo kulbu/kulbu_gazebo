@@ -30,6 +30,7 @@
   <run_depend>geometry_msgs</run_depend>
   <run_depend>ratslam_ros</run_depend>
   <run_depend>rtabmap_ros</run_depend>
+  <run_depend>xacro_common</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

@@ -11,7 +11,7 @@
   <arg name="yaw" default="3.1415926535897931"/>
 
   <!-- URDF description -->
-  <param name="$(arg ns)/model_description" command="$(find xacro)/xacro.py '$(find kulbu_description)/urdf/$(arg model).xacro' ns:=$(arg ns)" />
+  <param name="$(arg ns)/model_description" command="$(find xacro)/xacro.py '$(find xacro_common)/urdf/$(arg model).xacro' ns:=$(arg ns)" />
 
   <!-- push model_description to factory and spawn in gazebo -->
   <node name="model_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
